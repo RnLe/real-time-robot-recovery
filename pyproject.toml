@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "real-time-robot-recovery"
+version = "0.1.0"
+description = "Hardware bring-up and research tooling for recovery learning on an SO-ARM101"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pyserial>=3.5,<4",
+    "pyyaml>=6.0.2,<7",
+]
+
+[project.optional-dependencies]
+hardware = [
+    "lerobot[core_scripts,feetech]==0.6.1",
+    "torch==2.11.0",
+    "torchvision==0.26.0",
+]
+ml = [
+    "lerobot[training]==0.6.1",
+    "torch==2.11.0",
+    "torchvision==0.26.0",
+]
+
+[project.scripts]
+rrt = "real_time_recovery.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4,<9",
+    "pytest-cov>=6,<8",
+    "ruff>=0.12,<0.15",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv]
+required-version = ">=0.12"
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu128", marker = "sys_platform == 'linux'" }]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/real_time_recovery"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "SIM", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# The bench scripts are deliberately compact single-file utilities: wide
+# keyframe/register tables and grouped statements are easier to read there.
+"hardware/tools/*.py" = ["E501", "E701", "E702"]
