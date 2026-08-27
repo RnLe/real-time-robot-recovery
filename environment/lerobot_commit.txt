@@ -1,0 +1,8 @@
+LeRobot version: 0.6.1
+Git tag: v0.6.1
+Git commit: 7e241bd630a3719a56157a497ce5d08f244784f1
+PyPI wheel: lerobot-0.6.1-py3-none-any.whl
+PyPI wheel SHA-256: 1894516040c65f80a45bd9741f8174aae90ed5d93da0627ab4f1a85fd8d75e90
+Release: https://github.com/huggingface/lerobot/releases/tag/v0.6.1
+Package: https://pypi.org/project/lerobot/0.6.1/
+
