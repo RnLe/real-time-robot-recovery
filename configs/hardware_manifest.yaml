@@ -1,0 +1,23 @@
+schema_version: 1
+status: verified
+kit:
+  manufacturer: Waveshare
+  model: SO-ARM101
+  variant: SE
+  sku: "Waveshare SO-ARM101 6-Achs Roboterarm Bausatz (SE) - CAM Kit, Amazon DE listing (no printed SKU on packaging; replace if one is found)"
+bus_baud_rate: 1000000
+arms:
+  follower:
+    controller_label: "Waveshare Bus Servo Adapter (A) v1.1"
+    servo_model_label: "ST3215"
+    power_supply:
+      label: "12V 5A DC (kit supply; identical to leader supply)"
+      output_voltage_v: 12.0
+      output_current_a: 5.0
+  leader:
+    controller_label: "Waveshare Bus Servo Adapter (A) v1.1"
+    servo_model_label: "ST3215 SE"
+    power_supply:
+      label: "12V 5A DC (kit supply; identical to follower supply)"
+      output_voltage_v: 12.0
+      output_current_a: 5.0
