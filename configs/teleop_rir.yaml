@@ -1,0 +1,23 @@
+# Teleoperation defaults for the SO-ARM101 SE pair.
+#
+# Gains: LeRobot defaults to P=16, I=0, which measures compliant and laggy on
+# this arm. P=32 / I=8 removes the static sag (2.9 deg -> 0.1 deg on
+# elbow_flex) at unchanged load and temperature. Sweep is in
+# hardware/private/bench_notes.md, summary in hardware/so101_se_bringup.md.
+#
+# Ports are /dev/serial/by-id aliases keyed on the CH343 adapter serials, so
+# they survive reboots and work on any Linux host.
+robot:
+  type: so101_follower
+  port: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5B79015017-if00
+  id: rir_follower_v1
+  max_relative_target: 5.0
+  position_p_coefficient: 32
+  position_i_coefficient: 8
+  position_d_coefficient: 32
+teleop:
+  type: so101_leader
+  port: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5B79017659-if00
+  id: rir_leader_v1
+fps: 60
+display_data: false
