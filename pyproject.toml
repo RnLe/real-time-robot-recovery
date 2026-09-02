@@ -7,6 +7,8 @@ name = "real-time-robot-recovery"
 version = "0.1.0"
 description = "Hardware bring-up and research tooling for recovery learning on an SO-ARM101"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "pyserial>=3.5,<4",
